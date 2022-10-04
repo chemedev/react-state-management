@@ -1,3 +1,9 @@
+// If the count is changed, the Parent re-renders, and then Component1, Component2, and AdditionalInfo re-render too.
+// However, AdditionalInfo doesn't have to re-render in this case because it doesn't depend on count.
+// This is an extra re-render that should be avoided if it has an impact on performance.
+// To avoid extra re-renders, we can lift up content.
+// In this case, Parent re-renders with count, hence, we create GrandParent, as follows:
+
 const AdditionalInfo = () => {
   return <p>Some information</p>
 };
